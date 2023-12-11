@@ -13,7 +13,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {Modal} from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import {TextField} from "@mui/material";
 
 export default function CheckboxList() {
     const [todos, setTodos] = useState([]);
@@ -27,23 +28,16 @@ export default function CheckboxList() {
                 console.log(error)
             })
     }, []);
+    const [name, setName] = useState(null);
+    const [description, setDescription] = useState(null);
+
+
+
+
+
     const [checked, setChecked] = React.useState([0]);
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(!open);
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-    };
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -57,6 +51,19 @@ export default function CheckboxList() {
 
         setChecked(newChecked);
     };
+    const handleCreate = () => {
+
+        axios.post('http://localhost:3000/', {name:name, description:description})
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
+
     const handleDelete = (item) => {
         console.log("id", item)
 
@@ -68,10 +75,32 @@ export default function CheckboxList() {
                 console.log(error)
             })
     }
+    const handleUpdate = (item) => {
+        console.log("id", item)
+
+        axios.put('http://localhost:3000/?id=' + item)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
 
     return (
         <List sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
+            <TextField  id={"standard-basic"} label="Titre" variant="standard"  onChange={(e)=>{
+                setName(e.target.value)
+                console.log(e.target.value)
+            }}/>
+            <TextField id={"standard-basic"} label="Description" variant="standard" onChange={(e)=>{
+                setDescription(e.target.value)
+                console.log(e.target.value)}} />
+            <ListItemButton role={undefined} dense   onClick={() => handleCreate()}>
+                <ListItemText primary={"Ajouter"}>
+                </ListItemText>
+            </ListItemButton>
             {todos.map((todo, index) => {
                 const labelId = `checkbox-list-label-${todo.name}`;
 
@@ -79,12 +108,16 @@ export default function CheckboxList() {
                 return (
                     <ListItem
                         key={index}
-                        onClick={handleClose}
                         secondaryAction={
                             <>
-                                <IconButton aria-label="comments">
-                                    <CommentIcon/>
+
+                                <IconButton edge="end" aria-label="comments" onClick={() => handleUpdate(todo._id)}
+                                            sx={{mr: 0.5}}>
+                                    <ModeEditIcon/>
+
                                 </IconButton>
+
+
                                 <IconButton edge="end" aria-label="comments" onClick={() => handleDelete(todo._id)}>
                                     <DeleteIcon/>
 
@@ -97,7 +130,7 @@ export default function CheckboxList() {
                             <ListItemIcon>
                                 <Checkbox
                                     edge="start"
-                                    checked={checked.indexOf(todo._id) !== -1}
+                                    checked={checked.indexOf(todo) !== -1}
                                     tabIndex={-1}
                                     disableRipple
                                     inputProps={{'aria-labelledby': labelId}}
@@ -105,21 +138,6 @@ export default function CheckboxList() {
                             </ListItemIcon>
                             <ListItemText id={labelId} primary={`${todo.name}`}/>
                         </ListItemButton>
-                        <Modal
-                            open={open}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box sx={style}>
-                                <Typography id="modal-modal-title" variant="h6" component="h2">
-                                    {todo.name}
-                                </Typography>
-                                <Typography id="modal-modal-description" sx={{mt: 2}}>
-                                    {todo.description}
-                                </Typography>
-                            </Box>
-                        </Modal>
                     </ListItem>
 
                 );
