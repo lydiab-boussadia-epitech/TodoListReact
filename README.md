@@ -23,10 +23,11 @@ Clonez le projet :
 ```
 
 .Installez les dependances et lancez le back :
-    ```bash
-    npm install
-    npm start
-    ```
+ ```bash
+     npm install
+     npm start
+ ```
+    
 2.--- ouvrir un nouveau terminal ---
 
 .Naviguez dans le front et installez les dependances
