@@ -22,7 +22,7 @@ Naviguez dans le projet ensuite dans le back:
     cd back
 ```
 
-Installez les dependances et lancez le back :
+Installez les dépendances et lancez le back :
  ```bash
      npm install
      npm start
@@ -31,7 +31,7 @@ Installez les dependances et lancez le back :
      
 2. Ouvrez un nouveau terminal 
 
-Naviguez dans le front et installez les dependances:
+Naviguez dans le front et installez les dépendances:
 
  ```bash
     cd front
