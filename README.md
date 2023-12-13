@@ -11,31 +11,32 @@ Cette application To-Do List a été créer avec la stack MERN (MongoDB, Express
 - MongoDB en ligne
 
 ## Installation et le lancement
-1.---ouvrez un terminal---
+1.Ouvrez un terminal
 Clonez le projet :
 
 `git clone  https://github.com/lydiab-boussadia-epitech/TodoListReact`
 
-.Naviguez dans le projet ensuite dans le back:
+Naviguez dans le projet ensuite dans le back:
 ```bash
     cd todo-list
     cd back
 ```
 
-.Installez les dependances et lancez le back :
+Installez les dependances et lancez le back :
  ```bash
      npm install
      npm start
  ```
     
-2.--- ouvrir un nouveau terminal ---
+     
+2. Ouvrez un nouveau terminal 
 
-.Naviguez dans le front et installez les dependances
+Naviguez dans le front et installez les dependances
   ```bash
     cd front
     npm install
     ```
-.Lancez le front
+Lancez le front
   ```bash
     npm start
     ```
