@@ -31,14 +31,17 @@ Installez les dependances et lancez le back :
      
 2. Ouvrez un nouveau terminal 
 
-Naviguez dans le front et installez les dependances
-  ```bash
+Naviguez dans le front et installez les dependances:
+
+ ```bash
     cd front
     npm install
-    ```
-Lancez le front
-  ```bash
+ ```
+
+
+Lancez le front:
+ ```bash
     npm start
-    ```
+ ```
 
 l'application sera accessible sur:  http://localhost:3000.
