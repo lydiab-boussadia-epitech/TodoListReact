@@ -76,7 +76,7 @@ export default function CheckboxList() {
                        }}/>
                 {modify ?
                     <>
-                        <ListItemButton role={undefined} dense sx={{textAlign: "center"}}
+                        <ListItemButton role={undefined} dense sx={{textAlign: "center"}} className={"bottom"}
                                         onClick={() => handleUpdate({todoOne, setTodoOne, setModify})}>
                             <ListItemText primary={"Modifier"}>
                             </ListItemText>

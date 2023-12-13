@@ -19,7 +19,7 @@ const card = (
 export default function OutlinedCard() {
     return (
         <Box sx={{ maxWidth: 400,mx:"auto",my:10 }}>
-            <Card className={"brd"} variant="outlined">{card}</Card>
+            <Card variant="outlined">{card}</Card>
         </Box>
     );
 }
